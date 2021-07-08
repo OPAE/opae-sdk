@@ -374,8 +374,7 @@ fpga_result errors_command(fpga_token *tokens, int num_tokens, int argc,
 					fpgainfo_print_err(
 						"reading error info structure", res);
 					replace_chars(errinfos[j].name, '_', ' ');
-					upcase_pci(errinfos[j].name,
-						    strnlen(errinfos[j].name, 4096));
+					upcase_pci(errinfos[j].name);
 					upcase_first(errinfos[j].name);
 				}
 

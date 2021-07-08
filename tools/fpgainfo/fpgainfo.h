@@ -46,7 +46,7 @@ void fpgainfo_print_err(const char *s, fpga_result res);
 void replace_chars(char *str, char match, char rep);
 
 // Turn all "pcie" into "PCIe"
-void upcase_pci(char *str, size_t len);
+void upcase_pci(char *str);
 
 // Upper-case the first letter of each word in str
 void upcase_first(char *str);

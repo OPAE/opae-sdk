@@ -188,7 +188,7 @@ void replace_chars(char *str, char match, char rep)
 }
 
 // Turn all "pcie" into "PCIe"
-void upcase_pci(char *str, size_t len)
+void upcase_pci(char *str)
 {
 	char *tmp;
 
@@ -198,7 +198,6 @@ void upcase_pci(char *str, size_t len)
 		*tmp++ = 'C';
 		*tmp++ = 'I';
 		str = tmp + 3;
-		len -= 3;
 		tmp = strcasestr(str, "pci");
 	}
 }

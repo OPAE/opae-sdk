@@ -16,15 +16,19 @@ echo ${TOP_DIR}
 
 cd ${TOP_DIR}/..
 tar --transform=$trans \
+  --exclude=__pycache__ \
   --exclude=_build \
+  --exclude=build \
   --exclude=.* \
   --exclude=*~ \
   --exclude=doc/sphinx \
   --exclude=opae-libs/plugins/ase \
+  --exclude=external/gtest \
   --exclude=external/opae-legacy/tests \
   --exclude=external/opae-legacy/scripts \
   --exclude=external/opae-legacy/tools/coreidle \
   --exclude=external/opae-legacy/tools/hssi \
+  --exclude=external/opae-test \
   --exclude=tools/extra/pyfpgadiag \
   --exclude=tools/extra/pypackager \
   --exclude=packaging/opae/rpm/create-tarball.sh \

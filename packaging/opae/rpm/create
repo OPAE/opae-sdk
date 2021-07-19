@@ -45,6 +45,7 @@ SDK_DIR="$(cd "${SCRIPT_DIR}/../../../" && pwd)"
 # Check for prerequisite packages.
 for pkg in 'make' \
            'cmake' \
+           'cli11-devel' \
            'git' \
            'gcc' \
            'gcc-c++' \

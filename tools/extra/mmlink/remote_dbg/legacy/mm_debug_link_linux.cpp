@@ -166,7 +166,7 @@ void mm_debug_link_linux::write_mmr(off_t target,
                 break;
 	default:
                 cerr << "Illegal data type '" << access_type << "'.\n";
-                exit(2);
+		break;
         }
 }
 

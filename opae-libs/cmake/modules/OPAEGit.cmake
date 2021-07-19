@@ -33,7 +33,7 @@
 
 find_program(OPAE_GIT_EXECUTABLE git)
 
-if(EXISTS ${OPAE_GIT_EXECUTABLE})
+if((EXISTS ${OPAE_GIT_EXECUTABLE}) AND (EXISTS "${CMAKE_SOURCE_DIR}/.git"))
     # Find the abbreviated git commit hash.
     execute_process(COMMAND ${OPAE_GIT_EXECUTABLE} log -1 --format=%h
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -59,7 +59,7 @@ if(EXISTS ${OPAE_GIT_EXECUTABLE})
             set(OPAE_GIT_SRC_TREE_DIRTY 0)
         endif()
     endif()
-else(EXISTS ${OPAE_GIT_EXECUTABLE})
+else()
     set(OPAE_GIT_COMMIT_HASH unknown)
     set(OPAE_GIT_SRC_TREE_DIRTY 0)
-endif(EXISTS ${OPAE_GIT_EXECUTABLE})
+endif()

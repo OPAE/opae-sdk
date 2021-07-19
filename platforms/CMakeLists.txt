@@ -33,6 +33,6 @@ set(PLATFORM_DIRS
 ## The configure_file rule below handles the substitution.
 set(PLATFORM_SHARE_DIR share/opae/platform)
 
-install(DIRECTORY ${PLATFORM_DIRS} DESTINATION ${PLATFORM_SHARE_DIR} COMPONENT platform)
+install(DIRECTORY ${PLATFORM_DIRS} DESTINATION ${PLATFORM_SHARE_DIR} USE_SOURCE_PERMISSIONS COMPONENT platform)
 
 add_subdirectory(scripts)

@@ -33,6 +33,7 @@ opae_add_executable(TARGET host_exerciser
         fpgaperf_counter
         ${libjson-c_LIBRARIES}
         ${libuuid_LIBRARIES}
+        ${LIBCAP_LIBRARIES}
     COMPONENT samplebin
 )
 

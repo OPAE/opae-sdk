@@ -1,5 +1,5 @@
 #!/usr/bin/cmake -P
-## Copyright(c) 2020, Intel Corporation
+## Copyright(c) 2021, Intel Corporation
 ##
 ## Redistribution  and  use  in source  and  binary  forms,  with  or  without
 ## modification, are permitted provided that the following conditions are met:
@@ -23,41 +23,29 @@
 ## INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
 ## CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
 ## ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-## POSSIBILITY OF SUCH DAMAGE.
+## POSSIBILITY OF SUCH DAMAGE
 
-include(OPAEGit)
+find_package(PkgConfig)
+pkg_search_module(CAP libcap)
 
-include(Findjson-c)
+find_path(LIBCAP_INCLUDE_DIRS
+  NAMES sys/capability.h
+  HINTS ${PC_LIBCAP_INCLUDEDIR}
+        ${PC_LIBCAP_INCLUDE_DIRS}
+        /usr/local/include
+        /usr/include
+        ${CMAKE_EXTRA_INCLUDES})
 
-if(NOT libjson-c_FOUND)
-    message("-- json-c not found. Please install json-c package for you respective distribution:
-    DEB: apt install libjson-c-dev
-    RPM: yum install json-c-devel
-   If you have already installed this package in a non-standard location
-   please specify the location by defining the variable LIBJSON-C_ROOT in
-   your cmake command as follows: cmake <path to clone dir> -DLIBJSON-C_ROOT=<path to json-c install location>")
-   set(REQUIRED_DEPENDENCIES "libjson-c ${REQUIRED_DEPENDENCIES}")
-endif()
+find_library(LIBCAP_LIBRARIES
+  NAMES cap
+  HINTS ${PC_LIBCAP_LIBDIR}
+        ${PC_LIBCAP_LIBRARY_DIRS}
+        /usr/local/lib
+        /usr/lib
+        /lib
+        /usr/lib/x86_64-linux-gnu
+        ${CMAKE_EXTRA_LIBS})
 
-include(FindUUID)
-
-if(NOT libuuid_FOUND)
-    message("-- uuid not found. Please install uuid package for your respective distribution:
-    DEB: apt install uuid-dev
-    RPM: yum install libuuid-devel
-   If you have already installed this package in a non-standard location
-   please specify the location by defining the variable LIBUUID_ROOT in
-   your cmake command as follows: cmake <path to clone dir> -DLIBUUID_ROOT=<path to uuid install location>")
-   set(REQUIRED_DEPENDENCIES "libuuid ${REQUIRED_DEPENDENCIES}")
-endif()
-
-include(FindTbb)
-include(FindCap)
-
-include(OPAECompiler)
-if(OPAE_BUILD_TESTS)
-    find_package(GTest 1.8.0)
-endif(OPAE_BUILD_TESTS)
-include(OPAETest)
-include(OPAEPackaging)
-include(OPAEExternal)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(libcap DEFAULT_MSG
+  LIBCAP_INCLUDE_DIRS LIBCAP_LIBRARIES)

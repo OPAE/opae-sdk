@@ -41,6 +41,10 @@ endif()
 # Add the samples ####################################################
 ######################################################################
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
+  "${OPAE_SDK_SOURCE}/opae-libs/cmake/modules")
+include(FindCap)
+
 set(OPAE_SAMPLES src/opae/samples)
 if(BUILD_ASE_SAMPLES)
   # BBB libraries (MPF, DMA, etc)

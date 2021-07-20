@@ -22,7 +22,7 @@ jobs:
     - name: Get Packages
       uses: mstksg/get-package@v1
       with:
-        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov linux-headers-generic
+        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov linux-headers-generic libcap-dev
     - name: CMake Configure
       run: cmake -B .build -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DOPAE_ENABLE_MOCK=ON -DOPAE_BUILD_TESTS=ON
     - name: make

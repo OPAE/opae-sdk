@@ -58,7 +58,7 @@ jobs:
     - name: Get Packages
       uses: mstksg/get-package@v1
       with:
-        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov libtbb-dev linux-headers-generic libedit-dev libudev-dev
+        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov libtbb-dev linux-headers-generic libedit-dev libudev-dev libcap-dev
     - name: Get Python packages
       run: python3 -m pip install setuptools --user
     - name: configure ${{ matrix.build-type }}
@@ -74,7 +74,7 @@ jobs:
     - name: Get Packages
       uses: mstksg/get-package@v1
       with:
-        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov libtbb-dev libedit-dev libudev-dev
+        apt-get: uuid-dev libjson-c-dev libhwloc-dev lcov libtbb-dev libedit-dev libudev-dev libcap-dev
     - name: set hugepages
       run: sudo sysctl -w vm.nr_hugepages=8
     - name: run unit tests

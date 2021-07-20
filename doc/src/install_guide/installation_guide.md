@@ -88,7 +88,7 @@ fpga_mgr               16384  4 dfl_fme_region,fpga_region,dfl_fme_mgr,dfl_fme
 Before you build the kernel, you must install the required packages. Run the following commands:
 
 ```console
-$ sudo yum install cmake libuuid-devel json-c-devel hwloc-devel tbb-devel rpm-build libedit-devel kernel-devel python3-devel python3-pip python3-virtualenv
+$ sudo yum install cmake libuuid-devel json-c-devel hwloc-devel tbb-devel rpm-build libedit-devel kernel-devel python3-devel python3-pip python3-virtualenv libudev-devel libcap-devel
 ```
 
 Download the OPAE-SDK source code from github.
